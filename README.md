@@ -1,6 +1,6 @@
 # ConstructoraOdoo
 
-Odoo Module for the subject "Business Information Systems" on a module for construction companies.
+Odoo Module for the subject "Business Information Systems" for construction companies.
 
 
 ![Vista_lista_Trabajos](https://user-images.githubusercontent.com/38891983/122440445-d7f5f380-cf9c-11eb-897c-6cd557208e17.JPG)
