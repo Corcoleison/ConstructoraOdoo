@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="trabajo_form_view">
+            <field name="name">trabajo.form</field>
+            <field name="model">constructora.trabajo</field>
+            <field name="arch" type="xml">
+                <form string="Trabajo Form">
+                    <sheet>
+                        <group string="Informacion General">
+                            <field name="name"/>
+			    <field name="descripcion"/>
+                            <field name="responsable_id"/>
+			    <field name="cliente_id"/>
+			    <field name="activo"/>
+                        </group>
+                        <group string="Lugar y Fecha">
+                            <field name="fecha"/>
+			    <field name="lugar"/>
+                        </group>
+			<group string="Precio">
+                            <field name="presupuesto"/>
+                        </group>
+			<notebook>
+                            <page string="Servicios">
+                                <field name="servicios_ids">
+                                    <tree string="Servicios necesarios">
+					<field name="name"/>
+                                        <field name="descripcion"/>
+					<field name="preciototal"/>
+                                    </tree>
+                                </field>
+                            </page>
+			    <page string="Albañiles">
+                                <field name="albaniles_ids">
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+	<record model="ir.ui.view" id="trabajo_search_view">
+            <field name="name">trabajo.search</field>
+            <field name="model">constructora.trabajo</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="descripcion"/>
+                </search>
+            </field>
+        </record>
+
+        <!-- override the automatically generated list view for courses -->
+        <record model="ir.ui.view" id="trabajo_tree_view">
+            <field name="name">trabajo.tree</field>
+            <field name="model">constructora.trabajo</field>
+            <field name="arch" type="xml">
+                <tree string="Trabajo Tree">
+                    <field name="name"/>
+                    <field name="responsable_id"/>
+		    <field name="presupuesto"/>
+                </tree>
+            </field>
+        </record>
+
+
+
+        <!-- window action -->
+        <!--
+            The following tag is an action definition for a "window action",
+            that is an action opening a view or a set of views
+        -->
+        <record model="ir.actions.act_window" id="trabajo_list_action">
+            <field name="name">Trabajos</field>
+            <field name="res_model">constructora.trabajo</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Crea el primer trabajo
+                </p>
+            </field>
+        </record>
+
+        <!-- top level menu: no parent -->
+        <menuitem id="main_constructora_menu" name="Constructora"/>
+        <!-- A first level in the left side menu is needed
+             before using action= attribute -->
+        <menuitem id="constructora_menu" name="Constructora"
+                  parent="main_constructora_menu"/>
+        <!-- the following menuitem should appear *after*
+             its parent openacademy_menu and *after* its
+             action course_list_action -->
+        <menuitem id="trabajos_menu" name="Trabajos" parent="constructora_menu"
+                  action="trabajo_list_action"/>
+        <!-- Full id location:
+             action="openacademy.course_list_action"
+             It is not required when it is the same module -->
+
+               
+ <!-- servicios form view -->
+        <record model="ir.ui.view" id="servicio_form_view">
+            <field name="name">servicio.form</field>
+            <field name="model">constructora.servicio</field>
+            <field name="arch" type="xml">
+                <form string="Servicio Form">
+                    <sheet>
+                       <group>
+                            <group string="Informacion del Servicio">
+                                <field name="trabajo_id"/>
+				<field name="name"/>
+                                <field name="descripcion"/>
+				<field name="precioservicio"/>
+				<field name="preciomaterial"/>
+				<field name="preciototal"/>
+			    </group>
+                        </group>
+                        <notebook>
+                            <page string="Materiales">
+                                <field name="materiales_ids">
+                                    <tree string="Materiales necesarios">
+                                        <field name="name"/>
+                                        <field name="cantidad"/>
+					<field name="precio"/>
+					<field name="preciomaterial"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+	<record model="ir.ui.view" id="servicio_search_view">
+            <field name="name">servicio.search</field>
+            <field name="model">constructora.servicio</field>
+            <field name="arch" type="xml">
+                <search>
+		    <field name="name"/>
+                    <field name="descripcion"/>
+                </search>
+            </field>
+        </record>
+
+<!-- servicios tree/list view -->
+        <record model="ir.ui.view" id="servicio_tree_view">
+            <field name="name">servicio.tree</field>
+            <field name="model">constructora.servicio</field>
+            <field name="arch" type="xml">
+                <tree string="Servicio Tree">
+		    <field name="name"/>
+		    <field name="descripcion"/>
+                    <field name="trabajo_id"/>
+		    <field name="preciototal"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record model="ir.actions.act_window" id="servicio_list_action">
+            <field name="name">Servicios</field>
+            <field name="res_model">constructora.servicio</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="servicio_menu" name="Servicios"
+                  parent="constructora_menu"
+                  action="servicio_list_action"/>
+
+
+<!-- Materiales form view -->
+        <record model="ir.ui.view" id="material_form_view">
+            <field name="name">sesion.form</field>
+            <field name="model">constructora.material</field>
+            <field name="arch" type="xml">
+                <form string="Material Form">
+                    <sheet>
+                        <group>
+                            <group string="Material">
+                                <field name="name"/>
+                                <field name="cantidad"/>
+				<field name="precio"/>
+				<field name="preciomaterial"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+	<record model="ir.ui.view" id="material_search_view">
+            <field name="name">material.search</field>
+            <field name="model">constructora.material</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="cantidad"/>
+		    <field name="precio"/>
+		    <field name="preciomaterial"/>
+                </search>
+            </field>
+        </record>
+
+<!-- Material tree/list view -->
+        <record model="ir.ui.view" id="material_tree_view">
+            <field name="name">material.tree</field>
+            <field name="model">constructora.material</field>
+            <field name="arch" type="xml">
+                <tree string="Material Tree">
+                    <field name="name"/>
+		    <field name="cantidad"/>
+                    <field name="precio"/>
+		    <field name="preciomaterial"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record model="ir.actions.act_window" id="material_list_action">
+            <field name="name">Materiales</field>
+            <field name="res_model">constructora.material</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        
+	<menuitem id="material_menu" name="Materiales"
+                  parent="constructora_menu"
+                  action="material_list_action"/>
+
+    </data>
+</openerp>
+

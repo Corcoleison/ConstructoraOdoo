@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+	<!-- Materiales -->
+	
+	<record model="constructora.material" id="material0">
+            <field name="name">Escalera</field>
+            <field name="cantidad">1</field>
+	    <field name="precio">20.50</field>
+        </record>
+
+	<record model="constructora.material" id="material1">
+            <field name="name">Saco Cemento 10kg</field>
+            <field name="cantidad">3</field>
+	    <field name="precio">10</field>
+        </record>
+
+	<record model="constructora.material" id="material2">
+            <field name="name">Compresor</field>
+            <field name="cantidad">1</field>
+	    <field name="precio">25</field>
+        </record>
+
+	<record model="constructora.material" id="material3">
+            <field name="name">Pala</field>
+            <field name="cantidad">3</field>
+	    <field name="precio">10</field>
+        </record>
+
+	<record model="constructora.material" id="material4">
+            <field name="name">Pico</field>
+            <field name="cantidad">2</field>
+	    <field name="precio">13.20</field>
+        </record>
+
+	<record model="constructora.material" id="material5">
+            <field name="name">saco Arena 10kg</field>
+            <field name="cantidad">1</field>
+	    <field name="precio">10.30</field>
+        </record>
+
+
+	<!-- Albañiles -->
+	<record model="res.partner" id="albanil0">
+            <field name="name">Francisco Castillo</field>
+            <field name="albanil">True</field>
+        </record>
+	<record model="res.partner" id="albanil1">
+            <field name="name">Jose Cullera</field>
+            <field name="albanil">True</field>
+        </record>
+	<record model="res.partner" id="albanil3">
+            <field name="name">Juan Lopez</field>
+            <field name="albanil">True</field>
+        </record>
+
+	<record model="res.partner" id="albanil4">
+            <field name="name">Pablo Lujan</field>
+            <field name="albanil">True</field>
+        </record>
+	<record model="res.partner" id="albanil5">
+            <field name="name">Mikel Roca</field>
+            <field name="albanil">True</field>
+        </record>
+
+	<record model="res.partner" id="albanil6">
+            <field name="name">Pascu Rodri</field>
+            <field name="albanil">True</field>
+        </record>
+
+	
+	<!-- Trabajos -->
+
+        <record model="constructora.trabajo" id="trabajo0">
+            <field name="name">ReformaParcela</field>
+            <field name="descripcion">Una reforma en una parcela, consta de varias reformas y construcciones
+            </field>
+	    <field name="lugar">Ctr Jaen 23</field>
+	    <field name="fecha">02/03/2020</field>
+        </record>
+
+	<record model="constructora.trabajo" id="trabajo1">
+            <field name="name">ReformaCasaFamiliar</field>
+            <field name="descripcion">Una reforma en un chalet familiar
+            </field>
+	    <field name="lugar">Avenida Const Romero 23</field>
+	    <field name="fecha">01/04/2020</field>
+        </record>
+
+	<!-- Servicios -->
+
+        <record model="constructora.servicio" id="sesion0">
+            <field name="name">Construccion Rampa</field>
+            <field name="descripcion">Construccion de una rampa de 20x12
+            </field>
+        </record>
+
+	<record model="constructora.servicio" id="sesion1">
+            <field name="name">Construccion Muro</field>
+            <field name="descripcion">Construccion de un muro de 100x15
+            </field>
+        </record>
+
+	
+    </data>
+</openerp>

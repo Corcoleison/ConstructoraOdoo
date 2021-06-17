@@ -1,0 +1,44 @@
+<openerp>
+<data>
+    <report
+        id="report_trabajos"
+        model="constructora.trabajo"
+        string="Factura Trabajo"
+        name="constructora.factura_trabajo_view"
+        file="constructora.factura_trabajo"
+        report_type="qweb-pdf" />
+
+    <template id="factura_trabajo_view">
+	<![CDATA[&nbsp;]]>
+        <t t-call="report.html_container">
+	    <![CDATA[&nbsp;]]>
+            <t t-foreach="docs" t-as="doc">
+		<![CDATA[&nbsp;]]>
+                <t t-call="report.external_layout">
+		    <![CDATA[&nbsp;]]>
+                    <div class="page">
+			<![CDATA[&nbsp;]]>
+			<![CDATA[&nbsp;]]>
+                        <h2 t-field="doc.name"/>
+			<![CDATA[&nbsp;]]>
+                        <p>Nombre: <span t-field="doc.name"/>, Descripcion: <span t-field="doc.descripcion"/></p>
+			<![CDATA[&nbsp;]]>
+			<p>Fecha: <span t-field="doc.fecha"/>, Lugar: <span t-field="doc.lugar"/></p>
+			<p>Responsable: <span t-field="doc.responsable_id.name"/></p>
+			<p>Cliente: <span t-field="doc.cliente_id.name"/></p>
+			<p>Precio Total: <span t-field="doc.presupuesto"/></p>
+                        <h3>Servicios:</h3>
+                        <ul>
+                            <t t-foreach="doc.servicios_ids" t-as="servicio">
+                                <li>Tipo: <span t-field="servicio.name"/></li>
+				<li>Precio total: <span t-field="servicio.preciototal"/></li>
+                            </t>
+                        </ul>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</data>
+</openerp>
+
